@@ -19,7 +19,6 @@ void insertAtEnd(node**head,int d) {
 	node *n,*temp=*head;
 
 	if(*head==NULL) {
-		//add a new node
 		 *head = (node*)malloc(sizeof(node));
 		(*head) ->prev = NULL;
 		(*head) ->data = d;
@@ -31,7 +30,6 @@ void insertAtEnd(node**head,int d) {
 		while(temp->next!=NULL) {
 			temp = temp->next;
 		}
-		//add a new node at the end
 
 		n = (node*)malloc(sizeof(node));
 		n->data = d;
@@ -43,14 +41,10 @@ void insertAtEnd(node**head,int d) {
 }
 
 void insertLeft(node**h,int d,int ele) {
-	//check if it is the first element
 	node*head = *h;
 	if(head->data == ele) {
-		//code to enter at the start of the list
 		node*temp1 = NULL;
-		//add a new node
 		temp1 = (node*)malloc(sizeof(node));
-			//assigning values to temp
 		temp1->prev = NULL;
 		temp1->data = d;
 		temp1->next = *h;
@@ -61,7 +55,6 @@ void insertLeft(node**h,int d,int ele) {
 	}
 
 	node*temp;
-	//traverese till we find the element
 	while(head!=NULL) {
 		if(head->data == ele) {
 			head = head->prev;
@@ -90,17 +83,14 @@ void deleteNode(node**head,int d) {
 	}
 	while(temp!=NULL) {
 		if(temp->data == d) {
-			//if node to be deleted is first node
 			if(temp == *head) {
 				*head = (*head)->next;
 				(*head)->prev = NULL;
 			}
-			//if last node is to be deleted
 			else if(temp->next == NULL) {
 				temp->prev->next = NULL;
 				free(temp);
 			}
-			//if node is present somewhere in between
 			else {
 				temp->prev->next = temp->next;
 				temp->next->prev = temp->prev;
